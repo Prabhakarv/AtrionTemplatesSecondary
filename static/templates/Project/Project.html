@@ -1,0 +1,112 @@
+﻿
+<head>
+	<meta charset="utf-8" />
+	<title>Atrion Project List</title>
+</head>
+ <div ng-app = "thinkster" ng-controller = "ProjectController" class="well  well-lg">
+	  <table tr-ng-grid=''  items="Projectdata" class = "table formbackgroundcolor">
+				  <thead>
+						<tr>
+							<th field-name="project_name" display-name="Project" enable-filtering="true" enable-sorting="true" cell-width="10em" display-align="right">
+							</th>
+							  <th field-name="project_startdate" display-name="Start Date"display-align="center" >
+							</th>
+							  <th field-name="created_at" display-name="Created"display-align="center" >
+							</th>
+							  <th field-name="project_status" display-name="Status" display-align="center">
+							</th>                            
+							  <th field-name="customer" display-name="Customer" display-align="center">
+							</th>                            
+							  <th field-name="employee" display-name="Emplaoyee" display-align="center">
+							</th>
+						</tr>
+				</thead>
+		  </table>  
+	 <form class="form-horizontal formbackgroundcolor" ng-submit="submit()" role="form">
+		  <hr />
+		 <h3>Add New Project</h3>
+		 <hr />
+				  <div class="form-group">
+					<label class="control-label col-sm-2" for="email">Project Title:</label>
+					<div class="col-sm-10">					 
+                        <input type="text" class="form-control" name="input" ng-model="projecttitle.text" required ng-trim="false">
+					</div>
+				  </div>
+       <!--  <tt>text = {{projecttitle.text}}</tt><br/>-->
+		  <hr />
+          <!--<div class="container"> -->
+		 <div class="form-group"> 
+			 <label class="control-label col-sm-2" for="email">Project Status:</label>			             
+                  <label class="radio-inline">
+                        <input type="radio" ng-model="status.name" value="Initial">
+                        Initial
+                  </label>
+                 <label class="radio-inline">
+                        <input type="radio" ng-model="status.name" value="In Progress">
+                        In Progress
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" ng-model="status.name" value="Complete">
+                        Complete
+                </label>
+            <!--    <tt>status = {{status.name | json}}</tt><br/>-->
+                </div>	
+              <!--</div>		 -->
+		  <hr />	  
+         <!--<div class="container"> -->
+		   <div class="form-group"> 
+			 <label class="control-label col-sm-2" for="Date">Project Start Date:</label>		       
+				<md-datepicker ng-model="myDate" md-placeholder="Enter date"></md-datepicker> 
+			   </div>
+		 <hr />  	
+         <div class="form-group">
+					<label class="control-label col-sm-2" for="email">Customer Email:</label>
+					<div class="col-sm-10">					 
+                        <input type="email" class="form-control" name="input" ng-model="projecttitle.email" required ng-trim="false">
+					</div>
+				  </div>
+         <hr/>
+         <!--</div>	    -->
+          <div class="form-group">            		      
+               <label class="control-label col-sm-2" for="repeatSelect">Select Employee: </label>       		   			 
+                 <div class="dropdown div-inline">
+                    <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                {{selectedItem}}                           
+                                <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                        <li ng-repeat="e in Employeedata">
+                            <a ng-click="dropboxitemselected(e)">{{e.employee_firstname}}</a>            
+                        </li>
+                    </ul>
+                   </div>
+            </div>
+                             	                   
+			<hr/>  		
+           <div class="form-group">            		      
+               <label class="control-label col-sm-2" for="repeatSelect">Select Customer: </label>       		   			 
+                 <div class="dropdown div-inline">
+                    <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                {{selectedCustomer}}                           
+                                <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                        <li ng-repeat="c in Customerdata">
+                            <a ng-click="dropboxcustomerselected(c)">{{c.cust_firstname}}</a>            
+                        </li>
+                    </ul>
+                   </div>
+            </div>
+                             	                   
+			<hr/>  					      			                  			  
+				  <div class="form-group"> 
+					<div class="col-sm-offset-6 col-sm-10">
+					  <button type="submit"  class="btn btn-primary">Add Project</button>
+					</div>
+				  </div>		  
+		  <hr />
+	</form>      
+   </div>
+
+
+ 
